@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bureau des Affaires Non Classées</title>
+</head>
+<body>
+
+<div id="selectScreen">
+  <div class="top-eyebrow" id="selectEyebrow">Bureau des Affaires Non Classées</div>
+  <h1 id="selectTitle">Choisissez votre enquête</h1>
+  <p class="sub" id="selectSub">Sept dossiers en attente. Chacun a son propre chrono, ses suspects, ses indices.</p>
+
+  <div class="theme-switcher" id="themeSwitcher"></div>
+
+  <div class="investigator-bar">
+    <label for="investigatorName">Nom d'enquêteur</label>
+    <input type="text" id="investigatorName" placeholder="Ex. Inspecteur Dupuis" maxlength="30">
+    <button class="carnet-btn" id="carnetBtn">📖 Carnet du détective</button>
+  </div>
+
+  <div class="case-grid" id="caseGrid"></div>
+</div>
+
+<div class="modal-overlay" id="carnetOverlay">
+  <div class="modal carnet-modal">
+    <h3>📖 Carnet du détective</h3>
+    <p class="modal-label" id="carnetStatus">Historique partagé entre tous les enquêteurs de ce dossier.</p>
+    <div id="carnetLeaderboard"></div>
+    <div id="carnetHistory"></div>
+    <button class="modal-close" id="carnetClose">Fermer</button>
+  </div>
+</div>
+
+<div id="gameScreen">
+  <header>
+    <div class="header-controls">
+      <span class="timer" id="timerDisplay">10:00</span>
+      <button class="start-btn" id="startBtn">Démarrer l'enquête</button>
+      <button class="icon-btn" id="soundBtn">🔊</button>
+      <button class="reset-btn" id="resetBtn">↺ Réinitialiser</button>
+      <button class="switch-btn" id="switchBtn">📁 Changer d'enquête</button>
+    </div>
+    <div class="case-num"><span class="stamp">Confidentiel</span> <span id="caseNum">Dossier</span></div>
+    <h1 id="caseTitle">Titre</h1>
+    <p class="victim-line" id="victimLine">Victime</p>
+  </header>
+
+  <div class="board-outer">
+    <div class="board">
+      <svg id="strings"></svg>
+      <div class="section-title">Suspects</div>
+      <div class="section-sub">Cliquez sur un suspect pour lire sa déposition.</div>
+      <div class="suspects-row" id="suspectsRow"></div>
+
+      <div class="section-title">Indices — cliquez pour examiner</div>
+      <div class="section-sub">Reliez chaque indice au suspect qu'il concerne. Certaines paires révèlent un indice bonus caché. Cliquez « Démarrer l'enquête » quand vous êtes prêt : le chrono commence.</div>
+      <div class="evidence-grid" id="evidenceGrid"></div>
+    </div>
+
+    <div class="accusation">
+      <h2>Formuler une accusation</h2>
+      <p class="hint">Désignez le coupable, l'arme et le mobile avant la fin du temps imparti.</p>
+      <div class="accusation-row">
+        <div class="field"><label>Suspect</label><select id="accSuspect"><option value="">— Choisir —</option></select></div>
+        <div class="field"><label>Arme</label><select id="accWeapon"><option value="">— Choisir —</option></select></div>
+        <div class="field"><label>Mobile</label><select id="accMotive"><option value="">— Choisir —</option></select></div>
+        <button class="accuse-btn" id="accuseBtn">Accuser</button>
+      </div>
+      <div class="attempts-note" id="attemptsNote">Tentatives restantes : <b>3</b></div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3 id="modalTitle"></h3>
+    <p id="modalText"></p>
+    <div class="modal-label">Lier cet indice à un suspect</div>
+    <div class="link-buttons" id="modalLinks"></div>
+    <button class="modal-close" id="modalClose">Fermer</button>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script src="murder-script.js"></script>
+
+</body>
+</html>
